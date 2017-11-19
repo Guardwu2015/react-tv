@@ -60,7 +60,11 @@ function setInitialDOMProperties(
     } else if (isCustomComponentTag) {
       DOMPropertyOperations.setValueForAttribute(domElement, propKey, nextProp);
     } else if (nextProp != null) {
-      domElement.setAttribute(propKey, nextProp);
+      if (propKey === 'focusable') {
+        domElement.setAttribute('tabindex', 0);
+      } else {
+        domElement.setAttribute(propKey, nextProp);
+      }
     }
   }
 }
