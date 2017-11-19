@@ -39,7 +39,7 @@ const {
   updateProperties,
 } = ReactTVFiberComponent;
 
-const LOG_STEPS = false;
+const LOG_STEPS = true;
 const log = (a, b, c) => {
   if (LOG_STEPS) {
     console.log(a, b, c);
@@ -276,9 +276,10 @@ const ReactTVFiberRenderer = ReactFiberReconciler({
 
   scheduleDeferredCallback() {
     log('scheduleDeferredCallback');
+
   },
 
-  useSyncScheduling: false,
+  useSyncScheduling: true,
 
   now: () => {},
 });
