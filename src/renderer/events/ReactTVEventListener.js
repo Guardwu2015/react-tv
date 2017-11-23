@@ -25,7 +25,7 @@ export function trapBubbledEvent(topLevelType, handlerBaseName, element) {
   return EventListener.listen(
     element,
     handlerBaseName,
-    dispatchEvent.bind(null, topLevelType),
+    dispatchEvent.bind(null, topLevelType)
   );
 }
 
@@ -46,7 +46,7 @@ export function trapCapturedEvent(topLevelType, handlerBaseName, element) {
   return EventListener.capture(
     element,
     handlerBaseName,
-    dispatchEvent.bind(null, topLevelType),
+    dispatchEvent.bind(null, topLevelType)
   );
 }
 

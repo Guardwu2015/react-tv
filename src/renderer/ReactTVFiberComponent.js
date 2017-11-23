@@ -20,7 +20,7 @@ import * as DOMPropertyOperations from './shared/DOMPropertyOperations';
 import isCustomComponent from './shared/utils/isCustomComponent';
 import escapeTextContentForBrowser from './shared/utils/escapeTextContentForBrowser';
 
-import { focusableElement } from './events/NavigationListerners';
+import {focusableElement} from './events/NavigationListerners';
 
 const CHILDREN = 'children';
 const STYLE = 'style';
