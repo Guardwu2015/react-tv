@@ -20,6 +20,8 @@ import * as DOMPropertyOperations from './shared/DOMPropertyOperations';
 import isCustomComponent from './shared/utils/isCustomComponent';
 import escapeTextContentForBrowser from './shared/utils/escapeTextContentForBrowser';
 
+import { focusableElement } from './events/NavigationListerners';
+
 const CHILDREN = 'children';
 const STYLE = 'style';
 const HTML = '__html';
@@ -61,7 +63,7 @@ function setInitialDOMProperties(
       DOMPropertyOperations.setValueForAttribute(domElement, propKey, nextProp);
     } else if (nextProp != null) {
       if (propKey === 'focusable') {
-        domElement.setAttribute('tabindex', 0);
+        domElement.setAttribute('react-tv-focusable', true);
       } else {
         domElement.setAttribute(propKey, nextProp);
       }
@@ -75,7 +77,6 @@ function updateDOMProperties(
   wasCustomComponentTag: boolean,
   isCustomComponentTag: boolean
 ): void {
-  // console.log('UPDATE PAYLOAD', updatePayload);
   for (let i = 0; i < updatePayload.length; i += 2) {
     const propKey = updatePayload[i];
     const propValue = updatePayload[i + 1];
@@ -94,7 +95,11 @@ function updateDOMProperties(
         domElement.removeAttribute(propKey);
       }
     } else if (propValue != null) {
-      domElement.setAttribute(propKey, propValue);
+      if (propKey === 'focusable') {
+        domElement.setAttribute('react-tv-focusable', true);
+      } else {
+        domElement.setAttribute(propKey, propValue);
+      }
     } else {
       // If we're updating to null or undefined, we should remove the property
       // from the DOM node instead of inadvertently setting to a string. This

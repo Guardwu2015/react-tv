@@ -10,14 +10,13 @@ class App extends React.Component {
 
   render() {
     let items = []
-    /*
-      onFocus={() => console.log('focus ' + i)}
-          onBlur={() => console.log('blur ' + i)}
-          onPress={() => console.log('press ' + i)}*/
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 25; i++) {
       items.push(
         <div
           class="item"
+          onFocus={() => console.log('focus ' + i)}
+          onBlur={() => console.log('blur ' + i)}
+          onPress={() => console.log('press ' + i)}
           focusable
         >
           {i}
